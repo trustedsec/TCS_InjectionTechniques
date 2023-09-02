@@ -46,3 +46,11 @@ void checkProcesses() {
 
     CloseHandle(hSnapshot);
 }
+
+int main() {
+    while(1) {
+        checkProcesses();
+        Sleep(5000); // Sleep for 5 seconds
+    }
+    return 0;
+}
