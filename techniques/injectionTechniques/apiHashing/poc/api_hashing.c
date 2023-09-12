@@ -40,7 +40,6 @@ void* callFunction( UINT libNameHash, UINT funcNameHash )
     while (importDescriptor->Name != NULL)
     {
         LPCSTR libraryName = (LPCSTR)importDescriptor->Name + (DWORD_PTR)hModule;
-//        if( strcmp(libraryName, "USER32.dll") == 0)
         if( getHash(libraryName) ==  libNameHash)
         {
             library = importDescriptor->FirstThunk;
@@ -76,8 +75,10 @@ int main( int argc, char* argv[] )
 
     int msgboxID = MessageBox( NULL, "This is a test", "Are you sure?", MB_OKCANCEL);
     
-	int (*fun_ptr_1)( LPCSTR ) = callFunction( getHash("KERNEL32.dll"), getHash("GetModuleHandleA") );
-	int (*fun_ptr_2)( HWND, LPCSTR, LPCSTR, UINT ) = callFunction( getHash("USER32.dll"), getHash("MessageBoxA") );
+//	int (*fun_ptr_1)( LPCSTR ) = callFunction( getHash("KERNEL32.dll"), getHash("GetModuleHandleA") );
+//	int (*fun_ptr_2)( HWND, LPCSTR, LPCSTR, UINT ) = callFunction( getHash("USER32.dll"), getHash("MessageBoxA") );
+	int (*fun_ptr_1)( LPCSTR ) = callFunction( 0x6f2bd237, 0xd3324904 ); // GetModuleHandleA
+	int (*fun_ptr_2)( HWND, LPCSTR, LPCSTR, UINT ) = callFunction( 0x33adea26, 0xbc4da2a8 ); // MessageBoxA
 
 	printf("Got function pointers\n");
 
