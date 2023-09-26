@@ -24,7 +24,7 @@ int isDllHollowed(const char* dllName) { // dllName is the name of the DLL to ch
 }
 
 int main() { // Main function
-    const char* targetDll = "target.dll"; // Name of the DLL to check
+    const char* targetDll = "C:\\Windows\\System32\\amsi.dll"; // Name of the DLL to check
 
     // Check if the target DLL is hollowed
     if (isDllHollowed(targetDll)) { // If the DLL is hollowed, print a message
