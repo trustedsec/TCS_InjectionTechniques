@@ -1,5 +1,5 @@
 # Injection Technique -> Reflective DLL Injection
-## referenses
+## References
 - Modified the following code for the reflective loader
     - https://www.ired.team/offensive-security/code-injection-process-injection/reflective-dll-injection
 ## To Run
